@@ -3,55 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>S3-Application</title>
   </head>
   <body>
     <form>
-      <!-- <input type="file" name="file" /> -->
       <button id="submit-button" type="submit">submit</button>
     </form>
 
     <script>
       const form = document.querySelector("form");
-      const file = document.querySelector('input[name="file"]');
-
-      
-
       const submitButton = document.getElementById("submit-button");
-      
 
       form.addEventListener("submit", async (e) => {
-        console.log("hi")
         e.preventDefault();
-
-        // const { url, fields } = 
         await fetch(
-          "https://s3-upload-backend-production.up.railway.app/get-signed-url"
-        ).then((response) => response.json());
-
-        // const data = {
-        //   bucket: "webapp1buckett",
-        //   ...fields,
-        //   "Content-Type": file.files[0].type,
-        //   file: file.files[0],
-        // };
-
-        // const formData = new FormData();
-        // for (const name in data) {
-        //   formData.append(name, data[name]);
-        // }
-
-        // const header = {
-        //   "Access-Control-Allow-Origin": "*",
-        //   "Access-Control-Allow-Headers": "*",
-        // };
-
-        // const response = await fetch(url, {
-        //   method: "POST",
-        //   body: formData,
-        //   mode: "cors",
-        //   headers: header,
-        // });
+          "https://s3-upload-backend-production.up.railway.app/api/s3/encrypted-file/upload"
+        ).then((response) => console.log(response.json()));
       });
     </script>
   </body>
