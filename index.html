@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <!-- <input type="file" name="file" /> -->
+      <button id="submit-button" type="submit">submit</button>
+    </form>
+
+    <script>
+      const form = document.querySelector("form");
+      const file = document.querySelector('input[name="file"]');
+
+      
+
+      const submitButton = document.getElementById("submit-button");
+      
+
+      form.addEventListener("submit", async (e) => {
+        console.log("hi")
+        e.preventDefault();
+
+        // const { url, fields } = 
+        await fetch(
+          "http://localhost:8080/get-signed-url"
+        ).then((response) => response.json());
+
+        // const data = {
+        //   bucket: "webapp1buckett",
+        //   ...fields,
+        //   "Content-Type": file.files[0].type,
+        //   file: file.files[0],
+        // };
+
+        // const formData = new FormData();
+        // for (const name in data) {
+        //   formData.append(name, data[name]);
+        // }
+
+        // const header = {
+        //   "Access-Control-Allow-Origin": "*",
+        //   "Access-Control-Allow-Headers": "*",
+        // };
+
+        // const response = await fetch(url, {
+        //   method: "POST",
+        //   body: formData,
+        //   mode: "cors",
+        //   headers: header,
+        // });
+      });
+    </script>
+  </body>
+</html>
