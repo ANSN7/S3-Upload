@@ -89,7 +89,7 @@
 
     <script>
       myFunction = (id) => {
-        fetch(`https://s3-upload-backend-production.up.railway.app/api/s3/file/${id}/upload`).then(
+        fetch(`https://s3-upload-backend-production.up.railway.app/api/s3/file/${id}/upload`, {mode: 'no-cors'}).then(
           (response) => {
             response.json().then((res) => {
               console.log(res);
