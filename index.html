@@ -39,7 +39,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-4">
-            <h3>File 0.5 GB</h3>
+            <h3>File 200 MB</h3>
             <button
               type="button"
               onclick="myFunction(1)"
@@ -54,7 +54,7 @@
             </p>
           </div>
           <div class="col-sm-4">
-            <h3>File 1 GB</h3>
+            <h3>File 0.5 GB</h3>
             <button
               type="button"
               onclick="myFunction(2)"
@@ -69,7 +69,7 @@
             </p>
           </div>
           <div class="col-sm-4">
-            <h3>File 5 GB</h3>
+            <h3>File 1 GB</h3>
             <button
               type="button"
               onclick="myFunction(3)"
@@ -89,15 +89,21 @@
 
     <script>
       myFunction = (id) => {
-        fetch(`https://s3-upload-backend-production.up.railway.app/api/s3/file/${id}/upload`).then(
-          (response) => {
-            response.json().then((res) => {
-              console.log(res);
-              document.getElementById(`hideDiv${id}`).style.display = "block";
-              document.getElementById("myText").innerHTML = res["Elapsed_time"] + ' seconds';
-            });
+        fetch(
+          `https://s3-upload-backend-production.up.railway.app/api/s3/file/${id}/upload`,
+          {
+            headers: {
+              mode: "cors",
+            },
           }
-        );
+        ).then((response) => {
+          response.json().then((res) => {
+            console.log(res);
+            document.getElementById(`hideDiv${id}`).style.display = "block";
+            document.getElementById("myText").innerHTML =
+              res["Elapsed_time"] + " seconds";
+          });
+        });
       };
     </script>
   </body>
